@@ -9,6 +9,7 @@
   font-weight: 00;
   font-size: 24;
   margin-bottom: 10px;
+  color: white;
 }
 
 .game-container {
@@ -16,4 +17,8 @@
 
 .game-description-container {
   text-align: center;
+}
+
+body {
+  background-color: black;
 }

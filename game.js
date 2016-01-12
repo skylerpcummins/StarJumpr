@@ -8,6 +8,7 @@ StarJumpr.Play.prototype = {
   	this.load.image('pixel', 'assets/pixel.png');
   	this.load.image('star', 'assets/star.png');
     this.load.image('button', 'assets/button.png');
+    this.load.image('restart', 'assets/restart.png');
   	this.load.spritesheet('dude', 'assets/dude.png', 32, 48);
   },
 
@@ -30,7 +31,7 @@ StarJumpr.Play.prototype = {
     if (!this.playing) {
       this.playButton = this.add.button(
         160,
-        250,
+        210,
         'button',
         this.togglePlaying,
         this
@@ -186,8 +187,23 @@ StarJumpr.Play.prototype = {
     );
 
     if (this.player.y > this.cameraYMin + this.game.height && this.player.alive) {
-      this.state.start('Play');
+      this.playing = false;
+      this.onPause();
     }
+  },
+
+  onPause: function() {
+    this.restartButton = this.add.button(
+      120,
+      this.cameraYMin + 200,
+      'restart',
+      this.restartGame,
+      this
+    );
+  },
+
+  restartGame: function() {
+    this.state.start('Play');
   },
 
   autoBounce: function() {
